@@ -3,7 +3,17 @@ A warm welcome to everyone joining the TechArena Career Simulation! 👾🥳
 
 This TechArena track is **Career Survival Agent**. Your agent joins a product R&D team as a new hire and must survive and thrive over a 48-month career. Along the way, it will face story events, quarterly choices, performance reviews, and the long-term consequences of every decision.
 
-Your job is to design the Skills that guide the agent. This repository contains the local runner, an empty `example_preliminary_structure/` with the required preliminary layout, and `example_submission_structure/` with the required final-submission layout and starter text. Copy `example_submission_structure/` to `solution/`, replace the sample text and the empty `presentation.mp4`, then use `solution/` for local play and for the final ZIP. `solution/` is not included in the clone.
+Your job is to design the Skills that guide the agent. This repository contains the local runner, an empty `runner/example_preliminary_structure/` with the required preliminary layout, and `runner/example_submission_structure/` with the required final-submission layout and starter text. Copy `runner/example_submission_structure/` to `solution/`, replace the sample text and the empty `presentation.mp4`, then use `solution/` for local play and for the final ZIP. `solution/` is not included in the clone.
+
+## Repository layout
+
+| Path | Contents |
+|---|---|
+| `preliminary/` | Preliminary submission (design + Skills) |
+| `preliminary.zip` | Zipped preliminary submission |
+| `solution/` | Final submission (Skills) |
+| `SCORE_ANALYSIS.md` | Score report, dimension breakdown and run methodology |
+| `runner/` | Upstream harness: `career_sim_runner/`, docs, examples, tests, `pyproject.toml`, `uv.lock`, `Makefile` — run commands from inside `runner/` |
 
 Submit the preliminary design on the official competition website: <https://techarena-uk.hydro.ac/>.
 
