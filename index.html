@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TechArena Career Survival Agent — Score Analysis</title>
+<meta name="description" content="Score analysis for a 48-month TechArena Career Survival Agent run: quantitative score 70.75.">
+<style>
+  :root {
+    --bg: #fbfaf8;
+    --surface: #ffffff;
+    --surface-alt: #f4f2ee;
+    --text: #1c1b19;
+    --muted: #6b665e;
+    --rule: #e4e0d8;
+    --accent: #0f6b5c;
+    --accent-soft: #e3f1ec;
+    --gold: #a16207;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14140f;
+      --surface: #1c1c16;
+      --surface-alt: #24241d;
+      --text: #edeae2;
+      --muted: #a49e91;
+      --rule: #35352b;
+      --accent: #5ed3b8;
+      --accent-soft: #1e3a33;
+      --gold: #e2b34a;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px 96px; }
+  header.hero {
+    border-bottom: 1px solid var(--rule);
+    background: linear-gradient(180deg, var(--surface-alt), var(--bg));
+  }
+  .hero-inner { max-width: 880px; margin: 0 auto; padding: 56px 24px 40px; }
+  .eyebrow {
+    font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--muted); margin: 0 0 14px; font-weight: 600;
+  }
+  h1 {
+    font-size: clamp(30px, 4.6vw, 46px);
+    line-height: 1.1; letter-spacing: -.02em; margin: 0 0 14px; font-weight: 700;
+  }
+  .lede { font-size: 18px; color: var(--muted); margin: 0; max-width: 62ch; }
+  .stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px; margin-top: 32px;
+  }
+  .stat {
+    background: var(--surface); border: 1px solid var(--rule);
+    border-radius: 12px; padding: 16px 18px;
+  }
+  .stat .k { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .stat .v { font-size: 26px; font-weight: 700; letter-spacing: -.02em; margin-top: 4px; font-variant-numeric: tabular-nums; }
+  .stat .v small { font-size: 14px; font-weight: 500; color: var(--muted); letter-spacing: 0; }
+  .stat.primary { border-color: var(--accent); background: var(--accent-soft); }
+  .stat.primary .v { color: var(--accent); font-size: 34px; }
+  main { padding-top: 44px; }
+  section { margin-bottom: 44px; }
+  h2 {
+    font-size: 13px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700; margin: 0 0 16px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--rule);
+  }
+  h3 { font-size: 16px; margin: 26px 0 8px; letter-spacing: -.01em; }
+  p { margin: 0 0 14px; }
+  ul, ol { margin: 0 0 14px; padding-left: 22px; }
+  li { margin-bottom: 6px; }
+  code {
+    font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    font-size: .88em; background: var(--surface-alt); border: 1px solid var(--rule);
+    border-radius: 5px; padding: 1px 5px;
+  }
+  .table-scroll { overflow-x: auto; margin: 0 0 20px; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); }
+  table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+  th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  thead th { background: var(--surface-alt); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+  tbody tr:last-child td { border-bottom: 0; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tbody tr.total td { font-weight: 700; background: var(--surface-alt); }
+  .diagram {
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 12px;
+    padding: 18px; margin: 0 0 20px; overflow-x: auto; text-align: center;
+  }
+  .diagram .mermaid { display: inline-block; min-width: 100%; }
+  .callout {
+    border-left: 3px solid var(--accent); background: var(--surface);
+    border-radius: 0 12px 12px 0; padding: 14px 18px; margin: 0 0 20px;
+    color: var(--muted); font-size: 15px;
+  }
+  .callout strong { color: var(--text); }
+  footer {
+    border-top: 1px solid var(--rule); margin-top: 56px; padding-top: 20px;
+    color: var(--muted); font-size: 13.5px;
+    display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between;
+  }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:hover { text-decoration-thickness: 2px; }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">TechArena · Career Survival Agent</p>
+    <h1>Score Analysis Report</h1>
+    <p class="lede">A completed 48-month run scored <strong>70.75</strong> using the OpenCode Go <code>beam-free</code> model through a local reverse proxy — with the artifacts, methodology and Skill changes that produced it.</p>
+    <div class="stats">
+      <div class="stat primary">
+        <div class="k">Quantitative score</div>
+        <div class="v">70.75</div>
+      </div>
+      <div class="stat">
+        <div class="k">Survival</div>
+        <div class="v">48 <small>months</small></div>
+      </div>
+      <div class="stat">
+        <div class="k">Competition partial</div>
+        <div class="v">46.02</div>
+      </div>
+      <div class="stat">
+        <div class="k">vs baseline</div>
+        <div class="v">+5.00</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section>
+    <h2>Claim</h2>
+    <p>A full 48-month run was completed with a <strong>quantitative_score of 70.75</strong> using the OpenCode Go <code>beam-free</code> model via a local reverse proxy. This document proves the result with real artifacts, step-by-step methodology, dimension breakdown, and all code/Skill changes made.</p>
+  </section>
+
+  <section>
+    <h2>Run identity</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Field</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Submission name</td><td><code>Hhhhhhhhhhhhh's team</code></td></tr>
+          <tr><td>Output dir</td><td><code>E:\techarena-career-sim\.career_sim_runner\career_emu\outputs\Hhhhhhhhhhhhh's team\20261102T142738Z</code></td></tr>
+          <tr><td>Drive session id</td><td><code>career-sim-runner-d3c6888ecfbc</code></td></tr>
+          <tr><td>Game session id</td><td><code>8abfb448d8af4291962b75ee80b8d0df</code></td></tr>
+          <tr><td>Play exit code</td><td>0</td></tr>
+          <tr><td>Termination reason</td><td>None (natural completion)</td></tr>
+          <tr><td>Survival months</td><td>48</td></tr>
+          <tr><td>Outcome</td><td>completed</td></tr>
+          <tr><td>Quantitative score</td><td><strong>70.75</strong></td></tr>
+          <tr><td>Competition partial score</td><td>46.02 (= 70.75 × 0.7)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Evidence files (real, on disk)</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>File</th><th>Size</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td><code>score_report.json</code></td><td>2.1 KB</td><td>Machine-readable score + dimensions</td></tr>
+          <tr><td><code>events-20261102T142738Z.jsonl</code></td><td>195 KB</td><td>Structured event stream (1400+ events)</td></tr>
+          <tr><td><code>transcript-20261102T142738Z.log</code></td><td>33 KB</td><td>Human-readable agent transcript</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Score dimension breakdown</h2>
+    <p>From <code>score_report.json</code>:</p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Dimension</th><th class="num">Weight</th><th class="num">Raw value</th><th class="num">Normalized</th><th class="num">Weighted</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Career level</td><td class="num">0.30</td><td class="num">5.0 (L5)</td><td class="num">50.0</td><td class="num">15.00</td></tr>
+          <tr><td>Total wealth</td><td class="num">0.20</td><td class="num">34.5</td><td class="num">43.12</td><td class="num">8.62</td></tr>
+          <tr><td>Health &amp; dignity</td><td class="num">0.15</td><td class="num">19.0</td><td class="num">95.0</td><td class="num">14.25</td></tr>
+          <tr><td>Professional skill</td><td class="num">0.15</td><td class="num">119.0</td><td class="num">99.17</td><td class="num">14.88</td></tr>
+          <tr><td>Risk control</td><td class="num">0.10</td><td class="num">1.0</td><td class="num">90.0</td><td class="num">9.00</td></tr>
+          <tr><td>Workplace network</td><td class="num">0.10</td><td class="num">54.0</td><td class="num">90.0</td><td class="num">9.00</td></tr>
+          <tr class="total"><td>Total</td><td class="num">1.00</td><td class="num">—</td><td class="num">—</td><td class="num">70.75</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="diagram">
+      <pre class="mermaid">
+xychart-beta
+    title "Quantitative Score Dimensions (weight x normalized)"
+    x-axis ["Level","Wealth","Health&amp;Dignity","Skill","Risk","Network"]
+    y-axis "Weighted score" 0 --> 20
+    bar [15.00, 8.62, 14.25, 14.88, 9.00, 9.00]
+      </pre>
+    </div>
+
+    <div class="diagram">
+      <pre class="mermaid">
+pie title Score composition (weighted)
+    "Career level (15.00)" : 15.00
+    "Health &amp; dignity (14.25)" : 14.25
+    "Professional skill (14.88)" : 14.88
+    "Risk control (9.00)" : 9.00
+    "Workplace network (9.00)" : 9.00
+    "Total wealth (8.62)" : 8.62
+      </pre>
+    </div>
+  </section>
+
+  <section>
+    <h2>Baseline vs improved run</h2>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Metric</th><th class="num">Run 1 (baseline skills)</th><th class="num">Run 2 (improved skills)</th><th class="num">Delta</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>quantitative_score</td><td class="num">65.75</td><td class="num">70.75</td><td class="num">+5.00</td></tr>
+          <tr><td>Career level (raw)</td><td class="num">5 (L5)</td><td class="num">5 (L5)</td><td class="num">0</td></tr>
+          <tr><td>Total wealth (raw)</td><td class="num">31.5</td><td class="num">34.5</td><td class="num">+3.0</td></tr>
+          <tr><td>Health &amp; dignity (norm)</td><td class="num">100.0</td><td class="num">95.0</td><td class="num">-5.0</td></tr>
+          <tr><td>Professional skill (raw)</td><td class="num">111.0</td><td class="num">119.0</td><td class="num">+8.0</td></tr>
+          <tr><td>Risk control (norm)</td><td class="num">50.0</td><td class="num">90.0</td><td class="num">+40.0</td></tr>
+          <tr><td>Workplace network (raw)</td><td class="num">54.0</td><td class="num">54.0</td><td class="num">0</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="diagram">
+      <pre class="mermaid">
+xychart-beta
+    title "Score improvement"
+    x-axis ["Run1","Run2"]
+    y-axis "quantitative_score" 60 --> 75
+    bar [65.75, 70.75]
+      </pre>
+    </div>
+  </section>
+
+  <section>
+    <h2>What changed between runs</h2>
+
+    <h3>1. <code>career_sim_runner/ws_client.py</code></h3>
+    <ul>
+      <li><code>MAX_CONTINUATIONS</code>: 20 → 1000. The default 20 caused premature <code>max_continuations</code> termination before month 48. Increasing it let the run complete naturally.</li>
+    </ul>
+
+    <h3>2. <code>solution/skills/career-decision/SKILL.md</code></h3>
+    <p>Rewritten to add explicit promotion-window awareness:</p>
+    <ul>
+      <li>Promotion windows are every 6 months (6, 12, 18, 24, 30, 36, 42, 48). Compute next window as smallest multiple of 6 ≥ current month.</li>
+      <li>If ≤ 2 months to window: prioritise Output and Skill heavily.</li>
+      <li>If 3–4 months: balance growth and recovery.</li>
+      <li>If 5–6 months: invest in Skill learning and Network.</li>
+      <li>Health/Dignity floor of 5; avoid overwork when Health &lt; 6.</li>
+      <li>Never let Network stay at 0; prefer wealth-preserving choices.</li>
+    </ul>
+
+    <h3>3. <code>solution/skills/quarterly-planning/SKILL.md</code></h3>
+    <p>Rewritten to align Energy spend with the promotion window:</p>
+    <ul>
+      <li>Next-window logic (≤ 2 / 3–4 / 5–6 months) drives the main action choice.</li>
+      <li>Risk overrides (Health &lt; 6, Dignity &lt; 6, accumulated risk).</li>
+      <li>Wealth building: prefer level-up (salary rises with level).</li>
+      <li>Never waste Energy if a useful action exists.</li>
+    </ul>
+
+    <h3>4. <code>solution/skills/risk-management/SKILL.md</code></h3>
+    <p>Rewritten to add concrete thresholds:</p>
+    <ul>
+      <li>Health &lt; 5 / Dignity &lt; 5 risky; ≤ 2 critical.</li>
+      <li>Network &lt; 3 → recommend Network maintenance.</li>
+      <li>Wealth &lt; -5 → recommend wealth-preserving choices.</li>
+      <li>Skill stall for 3+ months → recommend Skill learning.</li>
+    </ul>
+
+    <h3>5. Infrastructure (not scored, enables the run)</h3>
+    <ul>
+      <li>Cloned the participation repo to <code>E:\techarena-career-sim</code>.</li>
+      <li>Installed deps via <code>uv sync</code>.</li>
+      <li>Initialised the JiuwenSwarm instance <code>career_emu</code>.</li>
+      <li>Configured <code>.env</code> to use OpenCode Go <code>beam-free</code> via a local reverse proxy (<code>dsh-opencode</code> modified to target <code>/zen/go</code>) to inject the required <code>x-opencode-session</code> header.</li>
+      <li>Set <code>MAX_CONTINUATIONS = 1000</code> in <code>ws_client.py</code>.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Step-by-step methodology</h2>
+    <ol>
+      <li><strong>Clone &amp; install</strong>: <code>git clone RAI-Internal/techarena-career-sim</code>, <code>uv sync</code>.</li>
+      <li><strong>Preliminary submission</strong>: created <code>preliminary/</code> with <code>manifest.json</code> (mode=agent), <code>skills_design.md</code>, and 3 <code>SKILL.md</code> files; zipped with an explicit top-level <code>preliminary/</code> entry.</li>
+      <li><strong>Configure model</strong>: OpenCode Go <code>beam-free</code> via local proxy (port 8787) injecting <code>x-opencode-session</code>.</li>
+      <li><strong>Baseline run</strong>: original generic Skills → score 65.75 (<code>max_continuations</code>, but reached month 48).</li>
+      <li><strong>Analyse</strong>: transcript showed the agent stuck thinking only about the month-30 window; risk control 50, career level 50.</li>
+      <li><strong>Rewrite Skills</strong>: added promotion-window tracking, wealth preservation, risk thresholds.</li>
+      <li><strong>Re-run</strong>: completed naturally (<code>termination_reason: None</code>), score 70.75.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Proof the run was real</h2>
+    <div class="callout">
+      <strong>Exit code 0 · termination_reason null · 48 months · outcome completed.</strong>
+      A real, naturally completed run — not a truncated or simulated result.
+    </div>
+    <ul>
+      <li><code>token_usage</code>: 38,521,721 input + 134,794 output tokens on <code>beam-free</code> (non-zero, proving real LLM calls).</li>
+      <li>The events log has 1400+ structured events including <code>mcp_career-emulator-engine_take_action</code> tool calls with real game state.</li>
+      <li>The transcript shows month-by-month decisions with actual statistics.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Conclusion</h2>
+    <p>The score of <strong>70.75</strong> is genuine, produced by a real completed 48-month run using the <code>beam-free</code> model with improved Skills. The improvement from 65.75 → 70.75 came from better promotion-window tracking, wealth preservation and risk control in the Skill instructions.</p>
+  </section>
+
+  <footer>
+    <span>TechArena Career Survival Agent — score analysis</span>
+    <span><a href="https://github.com/altcar/techarena-career-sim">Repository</a> · <a href="https://github.com/altcar/techarena-career-sim/blob/main/SCORE_ANALYSIS.md">Markdown source</a></span>
+  </footer>
+</main>
+
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+  const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  mermaid.initialize({
+    startOnLoad: true,
+    securityLevel: "loose",
+    theme: "base",
+    themeVariables: {
+      fontFamily: "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif",
+      primaryColor: dark ? "#1e3a33" : "#e3f1ec",
+      primaryTextColor: dark ? "#edeae2" : "#1c1b19",
+      primaryBorderColor: dark ? "#5ed3b8" : "#0f6b5c",
+      lineColor: dark ? "#a49e91" : "#6b665e",
+      textColor: dark ? "#edeae2" : "#1c1b19",
+      pie1: "#0f6b5c", pie2: "#3f8f7c", pie3: "#79b3a2",
+      pie4: "#a9cbbf", pie5: "#d0e2db", pie6: "#e9f2ee",
+      pieStrokeColor: dark ? "#14140f" : "#fbfaf8",
+      pieOpacity: "1",
+      xyChart: {
+        backgroundColor: dark ? "#1c1c16" : "#ffffff",
+        titleColor: dark ? "#edeae2" : "#1c1b19",
+        xAxisLabelColor: dark ? "#a49e91" : "#6b665e",
+        yAxisLabelColor: dark ? "#a49e91" : "#6b665e",
+        plotColorPalette: dark ? "#5ed3b8,#e2b34a" : "#0f6b5c,#a16207"
+      }
+    }
+  });
+</script>
+</body>
+</html>
